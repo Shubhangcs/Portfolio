@@ -1,4 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -8,6 +11,12 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  Future<void> _launchUrls(Uri url) async {
+    if (!await launchUrl(url)) {
+      throw Exception("No");
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,50 +60,72 @@ class _HomePageState extends State<HomePage> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Container(
-                  width: 50,
-                  height: 50,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(30),
-                    image: const DecorationImage(
-                      image: AssetImage('assets/git.png'),
+                GestureDetector(
+                  onTap: () {
+                    _launchUrls(Uri.parse('https://github.com/ShubhangCS'));
+                  },
+                  child: Container(
+                    width: 50,
+                    height: 50,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(30),
+                      image: const DecorationImage(
+                        image: AssetImage('assets/git.png'),
+                      ),
                     ),
                   ),
                 ),
-                Container(
-                  margin: const EdgeInsets.only(left: 20),
-                  width: 50,
-                  height: 50,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(30),
-                    image: const DecorationImage(
-                      image: AssetImage('assets/sta.jpg'),
+                GestureDetector(
+                  onTap: () {
+                    _launchUrls(Uri.parse(
+                        'https://www.instagram.com/code_with__shubh_'));
+                  },
+                  child: Container(
+                    margin: const EdgeInsets.only(left: 20),
+                    width: 50,
+                    height: 50,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(30),
+                      image: const DecorationImage(
+                        image: AssetImage('assets/sta.jpg'),
+                      ),
                     ),
                   ),
                 ),
-                Container(
-                  margin: const EdgeInsets.only(left: 20),
-                  width: 50,
-                  height: 50,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(30),
-                    image: const DecorationImage(
-                      image: AssetImage('assets/link.png'),
+                GestureDetector(
+                  onTap: () {
+                    _launchUrls(Uri.parse(
+                        'https://www.linkedin.com/in/shubhanga-cs-595858227'));
+                  },
+                  child: Container(
+                    margin: const EdgeInsets.only(left: 20),
+                    width: 50,
+                    height: 50,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(30),
+                      image: const DecorationImage(
+                        image: AssetImage('assets/link.png'),
+                      ),
                     ),
                   ),
                 ),
-                Container(
-                  margin: const EdgeInsets.only(left: 20),
-                  width: 50,
-                  height: 50,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(30),
-                    image: const DecorationImage(
-                      image: AssetImage('assets/dis.png'),
+                GestureDetector(
+                  onTap: () {
+                    _launchUrls(Uri.parse('https://discord.com',),);
+                  },
+                  child: Container(
+                    margin: const EdgeInsets.only(left: 20),
+                    width: 50,
+                    height: 50,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(30),
+                      image: const DecorationImage(
+                        image: AssetImage('assets/dis.png'),
+                      ),
                     ),
                   ),
                 ),
@@ -340,102 +371,14 @@ class _HomePageState extends State<HomePage> {
               },
               child: const Text(
                 'View Skills',
-                style: TextStyle(color: Colors.black),
+                style: TextStyle(
+                  color: Colors.black,
+                ),
               ),
             ),
           ),
         ],
       ),
-      // drawer: const Drawer(
-      //   backgroundColor: Colors.black,
-      //   child: Column(
-      //     children: [
-      //       SizedBox(
-      //         height: 100,
-      //         child: Center(
-      //           child: Text(
-      //             'Dashbord',
-      //             style: TextStyle(
-      //                 color: Colors.white,
-      //                 fontSize: 40,
-      //                 fontWeight: FontWeight.bold),
-      //           ),
-      //         ),
-      //       ),
-      //       Divider(
-      //         color: Colors.white,
-      //         thickness: 0.2,
-      //       ),
-      //       Row(
-      //         mainAxisAlignment: MainAxisAlignment.center,
-      //         children: [
-      //           Text(
-      //             "My Projects",
-      //             style: TextStyle(
-      //                 color: Colors.white,
-      //                 fontSize: 20,
-      //                 fontWeight: FontWeight.bold),
-      //           ),
-      //           SizedBox(width: 50,),
-      //           Icon(
-      //             Icons.arrow_forward_ios_rounded,
-      //             color: Colors.white,
-      //           ),
-      //         ],
-      //       ),
-      //       Divider(
-      //         color: Colors.white,
-      //         thickness: 0.2,
-      //       ),
-      //       Row(
-      //         mainAxisAlignment: MainAxisAlignment.center,
-      //         children: [
-      //           Text(
-      //             "My Workshops",
-      //             style: TextStyle(
-      //                 color: Colors.white,
-      //                 fontSize: 20,
-      //                 fontWeight: FontWeight.bold),
-      //           ),
-      //           SizedBox(
-      //             width: 50,
-      //           ),
-      //           Icon(
-      //             Icons.arrow_forward_ios_rounded,
-      //             color: Colors.white,
-      //           ),
-      //         ],
-      //       ),
-      //       Divider(
-      //         color: Colors.white,
-      //         thickness: 0.2,
-      //       ),
-      //       Row(
-      //         mainAxisAlignment: MainAxisAlignment.center,
-      //         children: [
-      //           Text(
-      //             "My Achivements",
-      //             style: TextStyle(
-      //                 color: Colors.white,
-      //                 fontSize: 20,
-      //                 fontWeight: FontWeight.bold),
-      //           ),
-      //           SizedBox(
-      //             width: 50,
-      //           ),
-      //           Icon(
-      //             Icons.arrow_forward_ios_rounded,
-      //             color: Colors.white,
-      //           ),
-      //         ],
-      //       ),
-      //       Divider(
-      //         color: Colors.white,
-      //         thickness: 0.2,
-      //       ),
-      //     ],
-      //   ),
-      // ),
     );
   }
 }
